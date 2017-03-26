@@ -1,0 +1,7 @@
+---
+# vars file for cron (CentOS specific)
+
+cron__packages_names:
+  - crontabs
+  - cronie
+  - cronie-anacron

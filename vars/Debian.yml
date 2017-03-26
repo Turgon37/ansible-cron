@@ -1,0 +1,7 @@
+---
+# vars file for cron (Debian specific)
+
+cron__packages_names:
+  - cron
+
+cron_exec_path: /usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
