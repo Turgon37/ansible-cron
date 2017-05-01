@@ -5,7 +5,7 @@
 cron__packages_names: []
 
 # The shell path to use for crontabs
-cron_exec_path: /sbin:/bin:/usr/sbin:/usr/bin
+cron__exec_path: /sbin:/bin:/usr/sbin:/usr/bin
 
 # The path to the main crontab file
 cron__main_file: /etc/crontab
