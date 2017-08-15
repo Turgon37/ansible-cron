@@ -5,3 +5,5 @@ cron__packages_names:
   - crontabs
   - cronie
   - cronie-anacron
+
+cron_exec_path: /sbin:/bin:/usr/sbin:/usr/bin
