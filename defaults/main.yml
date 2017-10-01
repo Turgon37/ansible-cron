@@ -1,5 +1,8 @@
 ---
-# Cron role configuration
+# defaults file for cron
+
+# Simple placeholder to allow other roles to detect this role
+cron__role: True
 
 # List of packages to install for adding cron feature to the host
 cron__packages_names: []
@@ -11,6 +14,11 @@ cron__exec_path: /sbin:/bin:/usr/sbin:/usr/bin
 cron__main_file: /etc/crontab
 
 # Crontabs environment variables
+
+# Default variables
+cron__default_envs:
+  PATH: '{{ cron__exec_path }}'
+
 # This variable is intended to be used in Ansible’s global inventory.
 cron__global_envs: {}
 
@@ -22,9 +30,10 @@ cron__group_envs: {}
 cron__host_envs: {}
 
 # Combine all customs mounts
-cron__envs: '{{ cron__global_envs
-                 | combine(cron__group_envs)
-                 | combine(cron__host_envs) }}'
+cron__envs: '{{ cron__default_envs|
+              combine(cron__global_envs)|
+              combine(cron__group_envs)|
+              combine(cron__host_envs) }}'
 
 # Crontabs jobs
 # This variable is intended to be used in Ansible’s global inventory.
@@ -38,6 +47,6 @@ cron__group_jobs: {}
 cron__host_jobs: {}
 
 # Combine all customs mounts
-cron__jobs: '{{ cron__global_jobs
-                 | combine(cron__group_jobs)
-                 | combine(cron__host_jobs) }}'
+cron__jobs: '{{ cron__global_jobs|
+              combine(cron__group_jobs)|
+              combine(cron__host_jobs) }}'

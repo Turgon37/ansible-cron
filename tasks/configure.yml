@@ -1,0 +1,21 @@
+---
+- name: Set main crontab variables
+  cronvar:
+    name: '{{ item.key }}'
+    value: '{{ item.value }}'
+    cron_file: '{{ cron__main_file }}'
+  with_dict: '{{ cron__envs }}'
+
+- name: Configure main crontab jobs
+  cron:
+    name: '{{ item.key }}'
+    day: '{{ item.value.day if item.value.day is defined else omit }}'
+    month: '{{ item.value.month if item.value.month is defined else omit }}'
+    weekday: '{{ item.value.weekday if item.value.weekday is defined else omit }}'
+    hour: '{{ item.value.hour if item.value.hour is defined else omit }}'
+    minute: '{{ item.value.minute if item.value.minute is defined else omit }}'
+    special_time: '{{ item.value.special_time if item.value.special_time is defined else omit }}'
+    job: '{{ item.value.job }}'
+    user: '{{ item.value.user if item.value.user is defined else omit }}'
+    cron_file: '{{ cron__main_file }}'
+  with_dict: '{{ cron__jobs }}'

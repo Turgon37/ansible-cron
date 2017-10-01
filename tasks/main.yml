@@ -1,42 +1,19 @@
 ---
+# tasks file for cron
+
 - name: Include the OS specific variables
   include_vars: "{{ item }}"
   with_first_found:
     - files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
         - "{{ ansible_distribution }}.yml"
         - "{{ ansible_os_family }}.yml"
+        - "defaults.yml"
       skip: true
-  tags: ['cron']
+  tags: ['always']
 
-- name: Install the latest version of cron packages
-  package:
-    name: '{{ item }}'
-    state: latest
-  with_items:
-    - "{{ cron__packages_names }}"
-  tags: ['cron']
+- import_tasks: install.yml
+  tags: ['cron', 'cron-install']
 
-- name: Set main crontab variables
-  cronvar:
-    name: '{{ item }}'
-    value: '{{ cron__envs[item] }}'
-    cron_file: '{{ cron__main_file }}'
-  with_items:
-    - '{{ cron__envs.keys() }}'
-  tags: ['cron']
-
-- name: Configure main crontab jobs
-  cron:
-    name: '{{ item }}'
-    day: '{{ cron__jobs[item].day if cron__jobs[item].day is defined else omit }}'
-    month: '{{ cron__jobs[item].month if cron__jobs[item].month is defined else omit }}'
-    weekday: '{{ cron__jobs[item].weekday if cron__jobs[item].weekday is defined else omit }}'
-    hour: '{{ cron__jobs[item].hour if cron__jobs[item].hour is defined else omit }}'
-    minute: '{{ cron__jobs[item].minute if cron__jobs[item].minute is defined else omit }}'
-    special_time: '{{ cron__jobs[item].special_time if cron__jobs[item].special_time is defined else omit }}'
-    job: '{{ cron__jobs[item].job }}'
-    user: '{{ cron__jobs[item].user if cron__jobs[item].user is defined else omit }}'
-    cron_file: '{{ cron__main_file }}'
-  with_items:
-    - '{{ cron__jobs.keys() }}'
-  tags: ['cron']
+- import_tasks: configure.yml
+  tags: ['cron', 'cron-configure']

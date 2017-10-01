@@ -1,0 +1,6 @@
+---
+- name: Install cron packages
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ cron__packages_names }}'
