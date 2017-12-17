@@ -28,7 +28,7 @@ This role is available for Debian and RedHat/CentOS
 The variables that can be passed to this role and a brief description about them are as follows:
 
 | Name              | Types/Values  | Description                                                        |
-| ------------------| --------------|---------------------------------------               ------------- |
+| ------------------| --------------|------------------------------------------------------------------- |
 | cron__exec_path   | String        | The PATH value for the cron tasks                                  |
 | cron__global_envs | Dict of String| List of global cron environment values                             |
 | cron__group_envs  | Dict of String| List of group cron environment values (only one group is supported)|
