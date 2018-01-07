@@ -1,6 +1,8 @@
 Ansible Role Cron
 =========
 
+[![Build Status](https://travis-ci.org/Turgon37/ansible-cron.svg?branch=master)](https://travis-ci.org/Turgon37/ansible-cron)
+
 :grey_exclamation: Before using this role, please know that all my Ansible roles are fully written and accustomed to my IT infrastructure. So, even if they are as generic as possible they will not necessarily fill your needs, I advice you to carrefully analyse what they do and evaluate their capability to be installed securely on your servers.
 
 **This roles configure crontab of the host**
