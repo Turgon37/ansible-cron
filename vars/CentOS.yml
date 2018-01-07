@@ -6,4 +6,6 @@ cron__packages_names:
   - cronie
   - cronie-anacron
 
+cron__service_name: crond
+
 cron_exec_path: /sbin:/bin:/usr/sbin:/usr/bin

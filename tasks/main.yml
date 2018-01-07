@@ -17,3 +17,6 @@
 
 - import_tasks: configure.yml
   tags: ['cron', 'cron-configure']
+
+- import_tasks: service.yml
+  tags: ['cron', 'cron-service']
