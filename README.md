@@ -18,7 +18,10 @@ Currently this role provide the following features :
 
 ### OS Family
 
-This role is available for Debian and RedHat/CentOS
+This role is available for
+
+  * Debian/Raspbian 8/9
+  * CentOS 7
 
 ### Dependencies
 
