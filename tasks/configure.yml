@@ -1,22 +1,23 @@
 ---
 - name: Set main crontab variables
   cronvar:
-    name: '{{ item.key }}'
-    value: '{{ item.value }}'
+    name:      '{{ item.key }}'
+    value:     '{{ item.value }}'
     cron_file: '{{ cron__main_file }}'
   with_dict: '{{ cron__envs }}'
 
 - name: Configure main crontab jobs
   cron:
-    name: '{{ item.key }}'
-    day: '{{ item.value.day if item.value.day is defined else omit }}'
-    month: '{{ item.value.month if item.value.month is defined else omit }}'
-    weekday: '{{ item.value.weekday if item.value.weekday is defined else omit }}'
-    hour: '{{ item.value.hour if item.value.hour is defined else omit }}'
-    minute: '{{ item.value.minute if item.value.minute is defined else omit }}'
-    special_time: '{{ item.value.special_time if item.value.special_time is defined else omit }}'
-    job: '{{ item.value.job }}'
-    user: '{{ item.value.user if item.value.user is defined else omit }}'
-    cron_file: '{{ cron__main_file }}'
-    disabled: '{{ item.value.disabled|d(false)|bool if item.value.disabled is defined else false }}'
+    name:         '{{ item.key }}'
+    day:          '{{ item.value.day|d(omit) }}'
+    month:        '{{ item.value.month|d(omit) }}'
+    weekday:      '{{ item.value.weekday|d(omit) }}'
+    hour:         '{{ item.value.hour|d(omit) }}'
+    minute:       '{{ item.value.minute|d(omit) }}'
+    special_time: '{{ item.value.special_time|d(omit) }}'
+    job:          '{{ item.value.job }}'
+    user:         '{{ item.value.user|d(omit) }}'
+    cron_file:    '{{ cron__main_file }}'
+    disabled:     '{{ item.value.disabled|d(False)|bool }}'
+    state:        "{{ item.value.state|d('present') }}"
   with_dict: '{{ cron__jobs }}'
