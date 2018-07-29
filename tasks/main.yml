@@ -2,21 +2,24 @@
 # tasks file for cron
 
 - name: Include the OS specific variables
-  include_vars: "{{ item }}"
+  include_vars: '{{ item }}'
   with_first_found:
     - files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "{{ ansible_os_family }}.yml"
-        - "defaults.yml"
+        - '{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+        - defaults.yml
       skip: true
   tags: ['always']
 
-- import_tasks: install.yml
+- name: Import install tasks
+  import_tasks: install.yml
   tags: ['cron', 'cron-install']
 
-- import_tasks: configure.yml
+- name: Import configure tasks
+  import_tasks: configure.yml
   tags: ['cron', 'cron-configure']
 
-- import_tasks: service.yml
+- name: Import service tasks
+  import_tasks: service.yml
   tags: ['cron', 'cron-service']

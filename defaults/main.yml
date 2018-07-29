@@ -1,16 +1,24 @@
 ---
 # defaults file for cron
 
-# Simple placeholder to allow other roles to detect this role
-cron__role: True
 
+### INSTALL CONFIGURATION
+# ---------------------------------------
 # List of packages to install for adding cron feature to the host
 cron__packages_names: []
 
+
+### SERVICE CONFIGURATION
+# ---------------------------------------
 # The name of the system service
 cron__service_name: cron
-cron__service_enabled: True
 
+# If true the apache service will be started and enabled
+cron__service_enabled: true
+
+
+### GENERAL CONFIGURATION
+# ---------------------------------------
 # The shell path to use for crontabs
 cron__exec_path: /sbin:/bin:/usr/sbin:/usr/bin
 
