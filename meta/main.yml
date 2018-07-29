@@ -1,20 +1,18 @@
 galaxy_info:
+  role_name: cron
   author: Pierre GINDRAUD
-  description: This role configure cron settings
+  description: This role install and configure cron daemon
   license: MIT
   min_ansible_version: 2.4
   platforms:
     - name: Debian
       versions:
-        - 9
-        - 8
-    - name: Raspbian
-      versions:
-        - 9
-        - 8
+        - jessie
+        - stretch
     - name: CentOS
       versions:
         - 7
-  galaxy_tags: []
+  galaxy_tags:
+    - cron
 
 dependencies: []

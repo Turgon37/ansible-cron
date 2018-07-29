@@ -1,6 +1,7 @@
 ---
+
 - name: "Ensure {{ cron__service_name }} is started and enabled on boot"
   service:
-    name:    '{{ cron__service_name }}'
+    name: '{{ cron__service_name }}'
     enabled: "{{ cron__service_enabled|bool }}"
-    state:   "{{ cron__service_enabled|bool|ternary('started', 'stopped') }}"
+    state: "{{ cron__service_enabled|bool|ternary('started', 'stopped') }}"
