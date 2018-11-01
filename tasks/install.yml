@@ -2,6 +2,5 @@
 
 - name: Install cron packages
   package:
-    name: '{{ item }}'
+    name: '{{ cron__packages_names|list }}'
     state: present
-  with_items: '{{ cron__packages_names|list }}'
