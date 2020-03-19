@@ -1,7 +1,7 @@
 Ansible Role Cron
 ========
 
-[![Build Status](https://travis-ci.org/Turgon37/ansible-cron.svg?branch=master)](https://travis-ci.org/Turgon37/ansible-cron)
+[![Build Status](https://travis-ci.com/Turgon37/ansible-cron.svg?branch=master)](https://travis-ci.com/Turgon37/ansible-cron)
 [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)
 [![Ansible Role](https://img.shields.io/badge/ansible%20role-Turgon37.cron-blue.svg)](https://galaxy.ansible.com/Turgon37/cron/)
 
