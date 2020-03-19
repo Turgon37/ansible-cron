@@ -22,4 +22,6 @@ script:
   - molecule test --all
 
 notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  webhooks:
+    urls: ['https://galaxy.ansible.com/api/v1/notifications/']
+    if: 'branch = master OR tag IS present'
